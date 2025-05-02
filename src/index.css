@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======= Base Styles & Theme Setup ======= */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: var(--background);
+    --card-foreground: var(--foreground);
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: var(--primary);
+    --muted: var(--secondary);
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: var(--secondary);
+    --accent-foreground: var(--primary);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--primary-foreground);
+    --border: 214.3 31.8% 91.4%;
+    --input: var(--border);
+    --ring: var(--foreground);
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: var(--background);
+    --card-foreground: var(--foreground);
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
+    --primary: var(--foreground);
+    --primary-foreground: var(--primary);
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: var(--foreground);
+    --muted: var(--secondary);
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: var(--secondary);
+    --accent-foreground: var(--foreground);
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: var(--foreground);
+    --border: var(--secondary);
+    --input: var(--border);
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  body {
+    @apply antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ======= Utility Classes ======= */
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 20px rgba(102, 102, 255, 0.5), 0 0 40px rgba(218, 98, 196, 0.3), 0 0 60px rgba(255, 107, 107, 0.2); }
+    50% { text-shadow: 0 0 30px rgba(102, 102, 255, 0.8), 0 0 60px rgba(218, 98, 196, 0.5), 0 0 90px rgba(255, 107, 107, 0.3); }
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+}
+
+/* ======= Flowchart & React Flow Styles ======= */
+.flowchart-container {
+  height: 500px;
+  width: 100%;
+}
+
+.react-flow__node {
+  @apply rounded-lg shadow-md border border-gray-200;
+}
+
+.react-flow__node-default {
+  @apply bg-white p-3;
+}
+
+.react-flow__node-input {
+  @apply bg-indigo-100 border-indigo-300;
+}
+
+.react-flow__node-output {
+  @apply bg-orange-100 border-orange-300;
+}
+
+.react-flow__handle {
+  @apply bg-indigo-500;
+}
+
+.react-flow__edge-path {
+  @apply stroke-indigo-500 stroke-2;
+}
+
+.react-flow__controls {
+  @apply bg-white shadow-md rounded-lg;
+}
+
+.react-flow__controls-button {
+  @apply border-gray-200 text-gray-700;
+}
+
+.react-flow__minimap {
+  @apply bg-white border border-gray-200 rounded-lg shadow-sm;
+}
+
+/* ======= Button & Theme Variations ======= */
+.btn-primary {
+  @apply bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-white hover:bg-gray-100 text-gray-800 font-medium py-2 px-4 rounded-lg border border-gray-300 transition-colors;
+}
+
+.btn-outline {
+  @apply border border-indigo-500 text-indigo-500 hover:bg-indigo-50 font-medium py-2 px-4 rounded-lg transition-colors;
+}
+
+.theme-standard {
+  @apply bg-white;
+}
+
+.theme-dark {
+  @apply bg-gray-900;
+}
+
+.theme-blueprint {
+  @apply bg-blue-900;
+}
+
+/* ======= Typography & Prose ======= */
+.prose {
+  @apply max-w-none;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  @apply font-semibold;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800;
+}
